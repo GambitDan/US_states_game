@@ -12,7 +12,6 @@ turtle.shape(image)
 states = pandas.read_csv("50_states.csv")
 all_states = states.state.to_list()
 guessed_states = []
-states_to_learn = []
 
 # main loop of the game
 while len(guessed_states) != 50:
@@ -34,9 +33,12 @@ while len(guessed_states) != 50:
         guessed_states.append(answer_state)
 
 # Create a list with all the states not guessed
-for state in all_states:
-    if state not in guessed_states:
-        states_to_learn.append(state)
+# for state in all_states:
+#     if state not in guessed_states:
+#         states_to_learn.append(state)
+
+states_to_learn = [
+    state for state in all_states if state not in guessed_states]
 
 learn = {
     "states": states_to_learn
